@@ -1,0 +1,13 @@
+#include<stdio.h>
+int main(){
+    //freopen("in.txt","r",stdin);
+    //freopen("out.txt","w",stdout);
+    int C,n;
+    scanf("%d",&C);
+    while(C--){
+        scanf("%d",&n);
+        int counts=2*n*n-n+1;
+        printf("%d\n",counts);
+    }
+    return 0;
+}
