@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<string.h>
+#include<vector>
+using namespace std;
+const int MAXN = 105;
+int tower[MAXN][MAXN];
+int findMaxSum(int N){
+    for(int i=N-1;i>=0;--i)
+        for(int j=0;j<=i;++j)
+            tower[i][j]+=max(tower[i+1][j],tower[i+1][j+1]);//状态转移关键
+    return tower[0][0];
+}
+
+int main(){
+    //freopen("in.txt","r",stdin);
+    //freopen("out.txt","w",stdout);
+    int C;//测试数
+    int N;//数塔的高度
+    scanf("%d",&C);
+    while(C--){
+        scanf("%d",&N);
+        memset(tower,0,sizeof(tower));//初始化
+        for(int i=0;i<N;++i)
+            for(int j=0;j<=i;++j)
+                scanf("%d",&tower[i][j]);
+        printf("%d\n",findMaxSum(N));
+    }
+    return 0;
+}
