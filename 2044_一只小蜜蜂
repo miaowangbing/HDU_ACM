@@ -1,0 +1,27 @@
+#include<stdio.h>
+const int MAXN=52;
+long long int dp[MAXN][MAXN]={0};//long long int【注意】
+void deal(){
+    dp[1][1]=1;
+	dp[1][2]=1;
+	for(int i=1;i<=50;i++){
+		for(int j=i+1;j<=50;j++){
+			if(i+2<j)dp[i][j]=dp[i][j-1]+dp[i][j-2];//相邻间隔大于2
+			else if(i+2==j)dp[i][j]=2;//相邻间隔为2
+			else if(i+1==j)dp[i][j]=1;//相邻间隔为1
+		}
+	}
+}
+int main(){
+    //freopen("in.txt","r",stdin);
+    //freopen("out.txt","w",stdout);
+    int N;
+    int a,b;
+    deal();
+    scanf("%d",&N);
+    while(N--){
+        scanf("%d%d",&a,&b);
+        printf("%lld\n",dp[a][b]);//lld【注意】
+    }
+    return 0;
+}
